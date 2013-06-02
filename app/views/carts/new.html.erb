@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td>
+	        <%= form_tag(line_items_path, :method => "post") do %>
+			  <%= hidden_field_tag(:product_id, product.id) %>
+			  <%= submit_tag("Add to Cart") %>
+			<% end %>
+        </td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
